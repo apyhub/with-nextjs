@@ -26,6 +26,7 @@ import {
   IconRepeat,
 } from "@tabler/icons";
 import { useMutation } from "@tanstack/react-query";
+import { data } from "apyhub";
 import dayjs from "dayjs";
 import type { NextPage } from "next";
 
@@ -83,7 +84,7 @@ const postEvent = async (values: FormValues) => {
 };
 
 export const getServerSideProps = async () => {
-  const timezones: string[] = [];
+  const { data: timezones } = await data.timezones();
   return {
     props: {
       timezones,
